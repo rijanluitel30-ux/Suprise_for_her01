@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Pratiksha 🌹</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  height:100vh;
+  overflow:hidden;
+  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+}
+
+/* MUSIC */
+audio{ display:none; }
+
+/* PETALS */
+.petal{
+  position:absolute;
+  top:-10vh;
+  font-size:20px;
+  animation:fall linear infinite;
+  opacity:0.9;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
+}
+
+/* PAGES */
+.page{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 1s ease;
+}
+
+.page.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.card{
+  background:rgba(255,255,255,0.96);
+  padding:35px;
+  border-radius:30px;
+  width:360px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,0.25);
+  animation:pop 1s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.rose{
+  font-size:90px;
+  animation:sway 3s infinite ease-in-out;
+}
+
+@keyframes sway{
+  0%{transform:rotate(-5deg)}
+  50%{transform:rotate(5deg)}
+  100%{transform:rotate(-5deg)}
+}
+
+h1{
+  color:#e6005c;
+  margin-top:10px;
+}
+
+.name{
+  font-size:24px;
+  color:#ff4d6d;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.text{
+  color:#555;
+  font-size:16px;
+  line-height:1.7;
+  margin-top:15px;
+}
+
+button{
+  margin-top:25px;
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff4d6d,#e6005c);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 12px 25px rgba(230,0,92,0.4);
+  transition:.3s;
+}
+
+button:hover{ transform:scale(1.08); }
+
+.signature{
+  margin-top:18px;
+  font-size:14px;
+  color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Romantic Music -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9c74d1f4f6.mp3">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <div class="card">
+    <div class="rose">🌹</div>
+    <h1>Happy Rose Day</h1>
+    <div class="name">Pratiksha ❤️</div>
+    <div class="text">
+      This isn’t just a rose…<br>
+      it’s a feeling, sent gently across distance.
+    </div>
+    <button onclick="nextPage(2)">Continue 🌸</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="card">
+    <h1>A Small Truth</h1>
+    <div class="text">
+      Some people slowly become important…<br>
+      without asking, without trying.<br><br>
+      You are one of those people.
+    </div>
+    <button onclick="nextPage(3)">Next 💌</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <div class="card">
+    <h1>From a Distance</h1>
+    <div class="text">
+      Even miles away,<br>
+      your presence feels close.<br><br>
+      Your name brings a smile,<br>
+      your thought brings calm.
+    </div>
+    <button onclick="nextPage(4)">One Last Page 🌹</button>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+  <div class="card">
+    <div class="rose">🌹</div>
+    <h1>Just So You Know</h1>
+    <div class="text">
+      This rose is simple,<br>
+      but the feeling is real.<br><br>
+      You are admired,<br>
+      appreciated,<br>
+      and thought of — warmly.
+    </div>
+    <div class="signature">
+      — From someone who truly cares
+    </div>
+  </div>
+</div>
+
+<script>
+/* Petals */
+for(let i=0;i<45;i++){
+  let p=document.createElement("div");
+  p.className="petal";
+  p.innerHTML="🌹";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(6+Math.random()*6)+"s";
+  p.style.fontSize=(16+Math.random()*22)+"px";
+  document.body.appendChild(p);
+}
+
+/* Page Navigation */
+function nextPage(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById("page"+n).classList.add('active');
+}
+</script>
+
+</body>
+</html>
